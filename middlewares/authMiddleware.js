@@ -13,13 +13,13 @@ const authMiddleware = async (req, res, next) => {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET)
 
-    req.user = decoded.username
+    req.user = decoded.username //creating a new property with the username.
 
     return next()
   } catch (error) {
     throw new CustomError(
       401,
-      `Not authorized to acces this route. ${error.message}`
+      `Not authorized to access this route. ${error.message}`
     )
   }
 }
